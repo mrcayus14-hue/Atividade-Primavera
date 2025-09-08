@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Página com Banner e Coluna</title>
+  <style>
+    :root{
+      --borda: #7ea17e;          /* cor das bordas (ajuste se quiser) */
+      --fundo: #f7f9f7;          /* cor de fundo da página */
+      --texto: #2a2a2a;          /* cor do texto */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body{
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--texto);
+      background: var(--fundo);
+      line-height: 1.5;
+    }
+
+    /* “Moldura” da página, como na imagem */
+    .pagina{
+      border: 2px solid var(--borda);
+      margin: 24px;
+      min-height: calc(100dvh - 48px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Banner superior */
+    .banner{
+      text-align: center;
+      padding: 28px 16px;
+      letter-spacing: 2px;
+      border-bottom: 2px solid var(--borda);
+      font-variant: small-caps;
+    }
+
+    /* Coluna central com borda */
+    .conteudo-wrap{
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px 60px;
+      position: relative;
+    }
+
+    /* Linhas verticais decorativas (lembra as colunas laterais da foto) */
+    .conteudo-wrap::before,
+    .conteudo-wrap::after{
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: var(--borda);
+      opacity: .9;
+    }
+    .conteudo-wrap::before{ left: 20px; }
+    .conteudo-wrap::after{  right: 20px; }
+
+    .coluna{
+      width: min(900px, 80vw);
+      background: #fff;
+      border: 2px solid var(--borda);
+      padding: 28px 28px 32px;
+      box-shadow: 0 0 0 4px #ffffff inset; /* faz a borda “respirar” */
+    }
+
+    .coluna h1{
+      font-size: clamp(26px, 3vw, 36px);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .coluna p{
+      text-align: justify;
+      text-indent: 0; /* deixe 0 para ficar igual ao da imagem */
+    }
+
+    /* Linha inferior para fechar a moldura visual (opcional) */
+    .rodape-linha{
+      border-top: 2px solid var(--borda);
+      height: 24px;
+    }
+
+    @media (max-width: 560px){
+      .conteudo-wrap::before,
+      .conteudo-wrap::after{ display:none; } /* some com as linhas no mobile */
+      .pagina{ margin: 12px; min-height: calc(100dvh - 24px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <header class="banner">BANNER</header>
+
+    <main class="conteudo-wrap">
+      <article class="coluna">
+        <h1>TITULO</h1>
+        <p>
+
+        </p>
+      </article>
+    </main>
+
+    <div class="rodape-linha"></div>
+  </div>
+</body>
+</html>
+
